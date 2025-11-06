@@ -10,11 +10,9 @@ const withPWA = withPWAInit({
 
 const nextConfig: NextConfig = {
   reactStrictMode: true,
-
-  // Force Webpack because next-pwa doesn’t work under Turbopack
-  webpack: (config) => {
-    return config;
-  },
+  // disable turbopack entirely and keep Webpack
+  webpack: (config) => config,
+  turbopack: {}, // empty config silences warnings if Turbopack gets auto-detected
 };
 
 export default withPWA(nextConfig);
